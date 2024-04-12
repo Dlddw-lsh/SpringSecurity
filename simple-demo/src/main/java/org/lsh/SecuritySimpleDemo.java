@@ -1,13 +1,12 @@
-package com.lsh.springsecurity;
+package org.lsh;
+
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringSecurityApplication {
-
+public class SecuritySimpleDemo {
     public static void main(String[] args) {
-        SpringApplication.run(SpringSecurityApplication.class, args);
+        SpringApplication.run(SecuritySimpleDemo.class);
     }
-
 }
