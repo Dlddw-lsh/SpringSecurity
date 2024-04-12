@@ -8,7 +8,10 @@ import org.lsh.mapper.UserMapper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
 
+// 使用Component将其加载到Spring的上下文中
+@Component
 public class DBUserDetailsImpl implements UserDetailsService {
 
     @Resource
