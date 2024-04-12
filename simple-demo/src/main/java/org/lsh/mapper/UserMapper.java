@@ -1,6 +1,7 @@
 package org.lsh.mapper;
 
-import org.lsh.entity.SysUser;
+import org.apache.ibatis.annotations.Mapper;
+import org.lsh.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -9,7 +10,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 * @createDate 2024-04-12 21:56:12
 * @Entity org.lsh.entity.SysUser
 */
-public interface SysUserMapper extends BaseMapper<SysUser> {
+@Mapper
+public interface UserMapper extends BaseMapper<User> {
 
 }
 

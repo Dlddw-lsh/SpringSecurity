@@ -1,9 +1,9 @@
 package org.lsh.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.lsh.entity.SysUser;
-import org.lsh.service.SysUserService;
-import org.lsh.mapper.SysUserMapper;
+import org.lsh.entity.User;
+import org.lsh.mapper.UserMapper;
+import org.lsh.service.UserService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service;
 * @createDate 2024-04-12 21:56:12
 */
 @Service
-public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser>
-    implements SysUserService{
+public class UserServiceImpl extends ServiceImpl<UserMapper, User>
+    implements UserService {
 
 }
 

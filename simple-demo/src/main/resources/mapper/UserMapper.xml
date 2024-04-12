@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.lsh.mapper.SysUserMapper">
+<mapper namespace="org.lsh.mapper.UserMapper">
 
-    <resultMap id="BaseResultMap" type="org.lsh.entity.SysUser">
+    <resultMap id="BaseResultMap" type="org.lsh.entity.User">
             <id property="userId" column="user_id" jdbcType="INTEGER"/>
             <result property="username" column="username" jdbcType="VARCHAR"/>
             <result property="password" column="password" jdbcType="VARCHAR"/>

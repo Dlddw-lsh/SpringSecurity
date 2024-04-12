@@ -65,8 +65,9 @@
         </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.5.4.1</version>
+            <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+            <!--要想使用SpringBoot3.2 mybatis版本要3.5.5-->
+            <version>3.5.5</version>
         </dependency>
     </dependencies>
 
