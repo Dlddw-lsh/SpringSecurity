@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 // 使用Component将其加载到Spring的上下文中
 @Component
 public class DBUserDetailsImpl implements UserDetailsService {
@@ -25,6 +27,7 @@ public class DBUserDetailsImpl implements UserDetailsService {
         if (dbUser == null) {
             throw new UsernameNotFoundException(username);
         }
-        return new LoginUser(dbUser);
+        List<String> authorities = userMapper.getAuthorities(dbUser.getUserId());
+        return new LoginUser(dbUser, authorities);
     }
 }

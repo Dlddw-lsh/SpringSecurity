@@ -3,6 +3,7 @@ package org.lsh.controller;
 import jakarta.annotation.Resource;
 import org.lsh.entity.User;
 import org.lsh.service.UserService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,11 +17,13 @@ public class UserController {
     public UserService userService;
 
     @GetMapping("/list")
+    @PreAuthorize("hasAuthority('sys:user:list')")
     public List<User> getList() {
         return userService.list();
     }
 
     @PostMapping("/add")
+    @PreAuthorize("hasAuthority('sys:user:add')")
     public void addUser(@RequestBody User user) {
         userService.saveUserDetails(user);
     }
