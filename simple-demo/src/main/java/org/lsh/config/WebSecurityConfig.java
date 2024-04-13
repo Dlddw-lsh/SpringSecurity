@@ -1,5 +1,7 @@
 package org.lsh.config;
 
+import org.lsh.handler.MyAuthenticationFailureHandler;
+import org.lsh.handler.MyAuthenticationSuccessHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -19,15 +21,13 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests((authorize) -> {
-                    authorize
-                            .requestMatchers("/user/add").anonymous()
-                            .anyRequest().authenticated();
-
-
-                })
+        http.authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers("/user/add").anonymous()
+                        .anyRequest().authenticated())
                 .csrf(AbstractHttpConfigurer::disable)
-                .formLogin(Customizer.withDefaults());
+                .formLogin(item -> item
+                        .successHandler(new MyAuthenticationSuccessHandler())
+                        .failureHandler(new MyAuthenticationFailureHandler()));
 
         return http.build();
     }
