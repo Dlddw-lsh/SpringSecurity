@@ -11,7 +11,7 @@
  Target Server Version : 80027
  File Encoding         : 65001
 
- Date: 12/04/2024 21:39:39
+ Date: 13/04/2024 13:59:09
 */
 
 SET NAMES utf8mb4;
@@ -38,6 +38,13 @@ CREATE TABLE `sys_menu`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of sys_menu
+-- ----------------------------
+INSERT INTO `sys_menu` VALUES (1, 0, 'user', 'sys:user', '/user', '/user', NULL, 0, NULL, NULL, NULL);
+INSERT INTO `sys_menu` VALUES (2, 1, 'user_list', 'sys:user:list', '/user/list', '/user/list', NULL, 0, NULL, NULL, NULL);
+INSERT INTO `sys_menu` VALUES (3, 1, 'user_add', 'sys:user:add', '/user/add', '/user/add', NULL, 0, NULL, NULL, NULL);
+
+-- ----------------------------
 -- Table structure for sys_role
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role`;
@@ -48,6 +55,12 @@ CREATE TABLE `sys_role`  (
   `role_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`role_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sys_role
+-- ----------------------------
+INSERT INTO `sys_role` VALUES (1, 'admin', '管理员', '1');
+INSERT INTO `sys_role` VALUES (2, 'test', 'test', '2');
 
 -- ----------------------------
 -- Table structure for sys_role_menu
@@ -65,6 +78,13 @@ CREATE TABLE `sys_role_menu`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of sys_role_menu
+-- ----------------------------
+INSERT INTO `sys_role_menu` VALUES (1, 1, 1);
+INSERT INTO `sys_role_menu` VALUES (2, 2, 1);
+INSERT INTO `sys_role_menu` VALUES (3, 3, 1);
+
+-- ----------------------------
 -- Table structure for sys_user
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user`;
@@ -75,6 +95,12 @@ CREATE TABLE `sys_user`  (
   PRIMARY KEY (`user_id`) USING BTREE,
   UNIQUE INDEX `username`(`username` ASC) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sys_user
+-- ----------------------------
+INSERT INTO `sys_user` VALUES (1, 'test1', '$2a$10$N1OrVqfCGoa6IIhVa17EweY1WnLXXoZuP6kGkujvZRnf/REosUb5G');
+INSERT INTO `sys_user` VALUES (2, 'test2', '$2a$10$N1OrVqfCGoa6IIhVa17EweY1WnLXXoZuP6kGkujvZRnf/REosUb5G');
 
 -- ----------------------------
 -- Table structure for sys_user_role
@@ -90,5 +116,11 @@ CREATE TABLE `sys_user_role`  (
   CONSTRAINT `sys_user_role_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `sys_user` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `sys_user_role_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `sys_role` (`role_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sys_user_role
+-- ----------------------------
+INSERT INTO `sys_user_role` VALUES (1, 1, 1);
+INSERT INTO `sys_user_role` VALUES (2, 2, 1);
 
 SET FOREIGN_KEY_CHECKS = 1;
