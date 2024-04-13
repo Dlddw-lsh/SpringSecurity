@@ -23,10 +23,6 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         implements UserService {
 
-
-    @Resource
-    HttpServletRequest request;
-
     @Resource
     UserMapper userMapper;
 

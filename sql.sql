@@ -11,7 +11,7 @@
  Target Server Version : 80027
  File Encoding         : 65001
 
- Date: 13/04/2024 13:59:09
+ Date: 13/04/2024 15:49:14
 */
 
 SET NAMES utf8mb4;
@@ -40,9 +40,19 @@ CREATE TABLE `sys_menu`  (
 -- ----------------------------
 -- Records of sys_menu
 -- ----------------------------
-INSERT INTO `sys_menu` VALUES (1, 0, 'user', 'sys:user', '/user', '/user', NULL, 0, NULL, NULL, NULL);
-INSERT INTO `sys_menu` VALUES (2, 1, 'user_list', 'sys:user:list', '/user/list', '/user/list', NULL, 0, NULL, NULL, NULL);
-INSERT INTO `sys_menu` VALUES (3, 1, 'user_add', 'sys:user:add', '/user/add', '/user/add', NULL, 0, NULL, NULL, NULL);
+INSERT INTO `sys_menu` VALUES (1, 0, '系统管理', 'sys:system:index', 'system', '/sys', NULL, 0, NULL, NULL, 1);
+INSERT INTO `sys_menu` VALUES (2, 1, '用户管理', 'sys:user:index', 'sysUserList', '/userList', '/sys/userList', 1, NULL, '系统管理', 1);
+INSERT INTO `sys_menu` VALUES (3, 1, '角色管理', 'sys:role:index', 'sysRoleList', '/roleList', '/sys/roleList', 1, NULL, '系统管理', 2);
+INSERT INTO `sys_menu` VALUES (4, 1, '菜单管理', 'sys:menu:index', 'sysMenuList', '/menuList', '/sys/menuList', 1, NULL, '系统管理', 3);
+INSERT INTO `sys_menu` VALUES (5, 2, '新增', 'sys:user:add', NULL, NULL, NULL, 2, NULL, '用户管理', 1);
+INSERT INTO `sys_menu` VALUES (6, 2, '删除', 'sys:user:delete', NULL, NULL, NULL, 2, NULL, '用户管理', 2);
+INSERT INTO `sys_menu` VALUES (7, 2, '编辑', 'sys:user:update', NULL, NULL, NULL, 2, NULL, '用户管理', 3);
+INSERT INTO `sys_menu` VALUES (8, 3, '新增', 'sys:role:add', NULL, NULL, NULL, 2, NULL, '角色管理', 1);
+INSERT INTO `sys_menu` VALUES (9, 3, '删除', 'sys:role:delete', NULL, NULL, NULL, 2, NULL, '角色管理', 2);
+INSERT INTO `sys_menu` VALUES (10, 3, '编辑', 'sys:role:update', NULL, NULL, NULL, 2, NULL, '角色管理', 3);
+INSERT INTO `sys_menu` VALUES (11, 4, '新增', 'sys:menu:add', NULL, NULL, NULL, 2, NULL, '菜单管理', 1);
+INSERT INTO `sys_menu` VALUES (12, 4, '删除', 'sys:menu:delete', NULL, NULL, NULL, 2, NULL, '菜单管理', 2);
+INSERT INTO `sys_menu` VALUES (13, 4, '编辑', 'sys:menu:update', NULL, NULL, NULL, 2, NULL, '菜单管理', 3);
 
 -- ----------------------------
 -- Table structure for sys_role
@@ -60,7 +70,7 @@ CREATE TABLE `sys_role`  (
 -- Records of sys_role
 -- ----------------------------
 INSERT INTO `sys_role` VALUES (1, 'admin', '管理员', '1');
-INSERT INTO `sys_role` VALUES (2, 'test', 'test', '2');
+INSERT INTO `sys_role` VALUES (2, 'student', '学生', '2');
 
 -- ----------------------------
 -- Table structure for sys_role_menu
@@ -83,6 +93,21 @@ CREATE TABLE `sys_role_menu`  (
 INSERT INTO `sys_role_menu` VALUES (1, 1, 1);
 INSERT INTO `sys_role_menu` VALUES (2, 2, 1);
 INSERT INTO `sys_role_menu` VALUES (3, 3, 1);
+INSERT INTO `sys_role_menu` VALUES (4, 4, 1);
+INSERT INTO `sys_role_menu` VALUES (5, 5, 1);
+INSERT INTO `sys_role_menu` VALUES (6, 6, 1);
+INSERT INTO `sys_role_menu` VALUES (7, 7, 1);
+INSERT INTO `sys_role_menu` VALUES (8, 8, 1);
+INSERT INTO `sys_role_menu` VALUES (9, 9, 1);
+INSERT INTO `sys_role_menu` VALUES (10, 10, 1);
+INSERT INTO `sys_role_menu` VALUES (11, 11, 1);
+INSERT INTO `sys_role_menu` VALUES (12, 12, 1);
+INSERT INTO `sys_role_menu` VALUES (13, 13, 1);
+INSERT INTO `sys_role_menu` VALUES (14, 1, 2);
+INSERT INTO `sys_role_menu` VALUES (15, 2, 2);
+INSERT INTO `sys_role_menu` VALUES (16, 5, 2);
+INSERT INTO `sys_role_menu` VALUES (17, 6, 2);
+INSERT INTO `sys_role_menu` VALUES (18, 7, 2);
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -121,6 +146,6 @@ CREATE TABLE `sys_user_role`  (
 -- Records of sys_user_role
 -- ----------------------------
 INSERT INTO `sys_user_role` VALUES (1, 1, 1);
-INSERT INTO `sys_user_role` VALUES (2, 2, 1);
+INSERT INTO `sys_user_role` VALUES (2, 2, 2);
 
 SET FOREIGN_KEY_CHECKS = 1;
