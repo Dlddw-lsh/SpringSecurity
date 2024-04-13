@@ -12,6 +12,11 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.Collections;
 
 @Configuration
 @EnableMethodSecurity // 开启基于注解的权限控制
@@ -33,7 +38,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/user/login").permitAll()
                         .anyRequest().authenticated())
                 .csrf(AbstractHttpConfigurer::disable)
-                .cors(Customizer.withDefaults()) // 允许跨域
+                .cors(item -> item.configurationSource(corsConfigSource())) // 允许跨域
                 .formLogin(item -> item
                         .successHandler(new MyAuthenticationSuccessHandler())
                         .failureHandler(new MyAuthenticationFailureHandler())
@@ -52,4 +57,15 @@ public class WebSecurityConfig {
         return http.build();
     }
 
+
+    private CorsConfigurationSource corsConfigSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedHeaders(Collections.singletonList("*"));
+        configuration.setAllowedOrigins(Collections.singletonList("*"));
+        configuration.setAllowedMethods(Collections.singletonList("*"));
+        configuration.setMaxAge(3600L);
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
 }
