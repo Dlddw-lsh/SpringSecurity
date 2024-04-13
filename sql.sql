@@ -11,7 +11,7 @@
  Target Server Version : 80027
  File Encoding         : 65001
 
- Date: 13/04/2024 21:20:07
+ Date: 13/04/2024 22:34:08
 */
 
 SET NAMES utf8mb4;
@@ -41,10 +41,10 @@ CREATE TABLE `sys_menu`  (
 -- ----------------------------
 -- Records of sys_menu
 -- ----------------------------
-INSERT INTO `sys_menu` VALUES (1, 0, '系统管理', 'sys:system:index', 'system', '/sys', '/sys', NULL, 0, 'SettingFilled', NULL, 1);
-INSERT INTO `sys_menu` VALUES (2, 1, '用户管理', 'sys:user:index', 'sysUserList', '/sys/userList', 'userList', '/sys/userList', 1, 'TeamOutlined', '系统管理', 1);
-INSERT INTO `sys_menu` VALUES (3, 1, '角色管理', 'sys:role:index', 'sysRoleList', '/sys/roleList', 'roleList', '/sys/roleList', 1, 'CommentOutlined', '系统管理', 2);
-INSERT INTO `sys_menu` VALUES (4, 1, '菜单管理', 'sys:menu:index', 'sysMenuList', '/sys/menuList', 'menuList', '/sys/menuList', 1, 'FolderOutlined', '系统管理', 3);
+INSERT INTO `sys_menu` VALUES (1, 0, '系统管理', 'sys:system:index', 'system', '/sys', 'sys', '', 0, 'SettingFilled', NULL, 2);
+INSERT INTO `sys_menu` VALUES (2, 1, '用户管理', 'sys:user:index', 'sysUserList', '/sys/userIndex', 'userIndex', 'sys/UserManager', 1, 'TeamOutlined', '系统管理', 1);
+INSERT INTO `sys_menu` VALUES (3, 1, '角色管理', 'sys:role:index', 'sysRoleList', '/sys/roleIndex', 'roleIndex', 'sys/RoleManager', 1, 'CommentOutlined', '系统管理', 2);
+INSERT INTO `sys_menu` VALUES (4, 1, '菜单管理', 'sys:menu:index', 'sysMenuList', '/sys/menuIndex', 'menuIndex', 'sys/MenuManager', 1, 'FolderOutlined', '系统管理', 3);
 INSERT INTO `sys_menu` VALUES (5, 2, '新增', 'sys:user:add', NULL, NULL, NULL, NULL, 2, '', '用户管理', 1);
 INSERT INTO `sys_menu` VALUES (6, 2, '删除', 'sys:user:delete', NULL, NULL, NULL, NULL, 2, '', '用户管理', 2);
 INSERT INTO `sys_menu` VALUES (7, 2, '编辑', 'sys:user:update', NULL, NULL, NULL, NULL, 2, '', '用户管理', 3);
@@ -54,6 +54,7 @@ INSERT INTO `sys_menu` VALUES (10, 3, '编辑', 'sys:role:update', NULL, NULL, N
 INSERT INTO `sys_menu` VALUES (11, 4, '新增', 'sys:menu:add', NULL, NULL, NULL, NULL, 2, '', '菜单管理', 1);
 INSERT INTO `sys_menu` VALUES (12, 4, '删除', 'sys:menu:delete', NULL, NULL, NULL, NULL, 2, '', '菜单管理', 2);
 INSERT INTO `sys_menu` VALUES (13, 4, '编辑', 'sys:menu:update', NULL, NULL, NULL, NULL, 2, '', '菜单管理', 3);
+INSERT INTO `sys_menu` VALUES (14, 0, '首页', 'sys:index', 'index', '/index', 'index', 'Index', 0, 'NodeIndexOutlined', NULL, 1);
 
 -- ----------------------------
 -- Table structure for sys_role
@@ -109,6 +110,8 @@ INSERT INTO `sys_role_menu` VALUES (15, 2, 2);
 INSERT INTO `sys_role_menu` VALUES (16, 5, 2);
 INSERT INTO `sys_role_menu` VALUES (17, 6, 2);
 INSERT INTO `sys_role_menu` VALUES (18, 7, 2);
+INSERT INTO `sys_role_menu` VALUES (19, 14, 1);
+INSERT INTO `sys_role_menu` VALUES (20, 14, 2);
 
 -- ----------------------------
 -- Table structure for sys_user
