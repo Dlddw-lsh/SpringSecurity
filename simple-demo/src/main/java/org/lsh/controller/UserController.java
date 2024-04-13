@@ -18,7 +18,7 @@ public class UserController {
     public UserService userService;
 
     @GetMapping("/list")
-    @PreAuthorize("hasAuthority('sys:user:list')")
+    @PreAuthorize("hasAuthority('sys:user:index')")
     public List<User> getList() {
         return userService.list();
     }

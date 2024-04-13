@@ -34,7 +34,11 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu>
             if (menu.getParentId() == 0) {
                 list.add(menuTree);
             }
-            map.put(menu.getMenuId(), menuTree);
+
+            // 排除掉按钮
+            if (menu.getType() != 2) {
+                map.put(menu.getMenuId(), menuTree);
+            }
         }
         for (Map.Entry<Integer, MenuTree> entry : map.entrySet()) {
             MenuTree value = entry.getValue();
@@ -49,7 +53,6 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu>
                     parent.setChildren(children);
                 }
                 children.add(value);
-
             }
         }
         return list;
