@@ -3,6 +3,9 @@ package org.lsh.service;
 import org.lsh.common.Result;
 import org.lsh.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.lsh.model.MenuTree;
+
+import java.util.List;
 
 /**
  * @author lsh
@@ -13,5 +16,5 @@ public interface UserService extends IService<User> {
 
     void saveUserDetails(User user);
 
-    Result<String> login(User user);
+    Result<List<MenuTree>> login(User user);
 }

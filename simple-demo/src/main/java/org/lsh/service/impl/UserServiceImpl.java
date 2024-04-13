@@ -7,12 +7,16 @@ import org.lsh.common.Result;
 import org.lsh.entity.LoginUser;
 import org.lsh.entity.User;
 import org.lsh.mapper.UserMapper;
+import org.lsh.model.MenuTree;
+import org.lsh.service.MenuService;
 import org.lsh.service.UserService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author lsh
@@ -30,6 +34,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     PasswordEncoder passwordEncoder;
 
     @Resource
+    MenuService menuService;
+
+    @Resource
     AuthenticationManager authenticationManager;
 
     @Override
@@ -41,17 +48,19 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     }
 
     @Override
-    public Result<String> login(User user) {
+    public Result<List<MenuTree>> login(User user) {
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
         // 登录失败会捕获异常信息
         try {
             Authentication authenticate = authenticationManager.authenticate(authenticationToken);
             LoginUser loginUser = (LoginUser) authenticate.getPrincipal();
             Integer userId = loginUser.getUser().getUserId();
+            List<MenuTree> trees = menuService.getTreeMenu(userId);
+            return Result.ok("登录成功", trees);
         } catch (Exception e) {
             return Result.error(402, e.getMessage(), "登录失败");
         }
-        return Result.ok("登录成功");
+
     }
 }
 

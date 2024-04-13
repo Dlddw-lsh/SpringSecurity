@@ -3,6 +3,7 @@ package org.lsh.controller;
 import jakarta.annotation.Resource;
 import org.lsh.common.Result;
 import org.lsh.entity.User;
+import org.lsh.model.MenuTree;
 import org.lsh.service.UserService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public Result<String> login(@RequestBody User user) {
+    public Result<List<MenuTree>> login(@RequestBody User user) {
         return userService.login(user);
     }
 }
