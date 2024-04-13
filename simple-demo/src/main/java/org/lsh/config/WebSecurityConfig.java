@@ -1,9 +1,6 @@
 package org.lsh.config;
 
-import org.lsh.handler.MyAuthenticationEntryPoint;
-import org.lsh.handler.MyAuthenticationFailureHandler;
-import org.lsh.handler.MyAuthenticationSuccessHandler;
-import org.lsh.handler.MyLogoutSuccessHandler;
+import org.lsh.handler.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -32,7 +29,10 @@ public class WebSecurityConfig {
                 .formLogin(item -> item
                         .successHandler(new MyAuthenticationSuccessHandler())
                         .failureHandler(new MyAuthenticationFailureHandler()))
-                .logout(item -> item.logoutSuccessHandler(new MyLogoutSuccessHandler()));
+                .logout(item -> item.logoutSuccessHandler(new MyLogoutSuccessHandler()))
+                .sessionManagement(item -> item
+                        .maximumSessions(1) // 最大几个客户端进行登录
+                        .expiredSessionStrategy(new MySessionInformationExpiredStrategy()));
 //                .exceptionHandling(exception -> exception
 //                        .authenticationEntryPoint(new MyAuthenticationEntryPoint()));
 
