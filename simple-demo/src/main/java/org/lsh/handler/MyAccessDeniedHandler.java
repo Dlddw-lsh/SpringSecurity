@@ -10,6 +10,7 @@ import org.springframework.security.web.access.AccessDeniedHandler;
 
 import java.io.IOException;
 
+// 验权失败处理器
 public class MyAccessDeniedHandler implements AccessDeniedHandler {
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {

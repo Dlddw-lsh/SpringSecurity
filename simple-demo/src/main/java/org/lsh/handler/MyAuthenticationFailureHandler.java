@@ -10,6 +10,7 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 
 import java.io.IOException;
 
+// 认证失败处理器
 public class MyAuthenticationFailureHandler implements AuthenticationFailureHandler {
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {

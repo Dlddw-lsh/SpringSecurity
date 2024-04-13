@@ -10,6 +10,7 @@ import org.springframework.security.web.authentication.logout.LogoutSuccessHandl
 
 import java.io.IOException;
 
+// 注销成功处理器
 public class MyLogoutSuccessHandler implements LogoutSuccessHandler {
     @Override
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
