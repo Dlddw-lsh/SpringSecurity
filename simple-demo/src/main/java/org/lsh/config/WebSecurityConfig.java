@@ -1,5 +1,6 @@
 package org.lsh.config;
 
+import org.lsh.handler.MyAuthenticationEntryPoint;
 import org.lsh.handler.MyAuthenticationFailureHandler;
 import org.lsh.handler.MyAuthenticationSuccessHandler;
 import org.lsh.handler.MyLogoutSuccessHandler;
@@ -23,13 +24,17 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/user/add").anonymous()
+                        .requestMatchers("/login").permitAll()
+                        .requestMatchers("/user/add").permitAll()
                         .anyRequest().authenticated())
                 .csrf(AbstractHttpConfigurer::disable)
+                .cors(Customizer.withDefaults()) // 允许跨域
                 .formLogin(item -> item
                         .successHandler(new MyAuthenticationSuccessHandler())
                         .failureHandler(new MyAuthenticationFailureHandler()))
                 .logout(item -> item.logoutSuccessHandler(new MyLogoutSuccessHandler()));
+//                .exceptionHandling(exception -> exception
+//                        .authenticationEntryPoint(new MyAuthenticationEntryPoint()));
 
         return http.build();
     }
