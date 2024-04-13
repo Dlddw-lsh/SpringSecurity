@@ -35,9 +35,13 @@ public class WebSecurityConfig {
                 .logout(item -> item.logoutSuccessHandler(new MyLogoutSuccessHandler()))
                 .sessionManagement(item -> item
                         .maximumSessions(1) // 最大几个客户端进行登录
-                        .expiredSessionStrategy(new MySessionInformationExpiredStrategy()));
-//                .exceptionHandling(exception -> exception
-//                        .authenticationEntryPoint(new MyAuthenticationEntryPoint()));
+                        .expiredSessionStrategy(new MySessionInformationExpiredStrategy()))
+                .exceptionHandling(exception -> exception
+                        // 未认证访问
+//                        .authenticationEntryPoint(new MyAuthenticationEntryPoint())
+                        // 未授权访问
+                        .accessDeniedHandler(new MyAccessDeniedHandler())
+                );
 
         return http.build();
     }
