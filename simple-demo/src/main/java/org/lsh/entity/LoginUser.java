@@ -1,6 +1,9 @@
 package org.lsh.entity;
 
 import com.alibaba.fastjson2.annotation.JSONField;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,12 +12,11 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * 由于要通过数据库进行登录操作，其中DBUserDetailsImpl需要使用到UserDetails对象
- * 所以这里新建一个登录用户，实现UserDetails接口
- */
+
 public class LoginUser implements UserDetails {
 
+    @Getter
+    @Setter
     private User user;
 
     private List<String> permissions;

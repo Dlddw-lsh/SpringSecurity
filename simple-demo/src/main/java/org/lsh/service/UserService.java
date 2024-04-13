@@ -1,5 +1,6 @@
 package org.lsh.service;
 
+import org.lsh.common.Result;
 import org.lsh.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -12,4 +13,5 @@ public interface UserService extends IService<User> {
 
     void saveUserDetails(User user);
 
+    Result<String> login(User user);
 }
