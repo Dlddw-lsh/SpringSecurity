@@ -2,6 +2,7 @@ package org.lsh.config;
 
 import org.lsh.handler.MyAuthenticationFailureHandler;
 import org.lsh.handler.MyAuthenticationSuccessHandler;
+import org.lsh.handler.MyLogoutSuccessHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -27,7 +28,8 @@ public class WebSecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .formLogin(item -> item
                         .successHandler(new MyAuthenticationSuccessHandler())
-                        .failureHandler(new MyAuthenticationFailureHandler()));
+                        .failureHandler(new MyAuthenticationFailureHandler()))
+                .logout(item -> item.logoutSuccessHandler(new MyLogoutSuccessHandler()));
 
         return http.build();
     }
