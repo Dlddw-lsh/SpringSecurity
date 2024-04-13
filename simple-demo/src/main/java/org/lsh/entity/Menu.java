@@ -1,30 +1,20 @@
 package org.lsh.entity;
 
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
+
 import lombok.Data;
 
 /**
- * 
  * @TableName sys_menu
  */
-@TableName(value ="sys_menu")
+@TableName(value = "sys_menu")
 @Data
 public class Menu implements Serializable {
-    /**
-     * 
-     */
+
     private Integer menuId;
 
-    /**
-     * 类型(0 目录 1 菜单 2 按钮)
-     */
-    private Integer type;
-
-    /**
-     * 
-     */
     private Integer parentId;
 
     /**
@@ -43,14 +33,24 @@ public class Menu implements Serializable {
     private String name;
 
     /**
+     * 跳转路径
+     */
+    private String menuUrl;
+
+    /**
      * 路由path
      */
-    private String path;
+    private String routePath;
 
     /**
      * 组件路径
      */
-    private String url;
+    private String componentPath;
+
+    /**
+     * 类型(0 目录 1 菜单 2 按钮)
+     */
+    private Integer type;
 
     /**
      * 菜单图标

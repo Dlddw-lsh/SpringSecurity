@@ -11,7 +11,7 @@
  Target Server Version : 80027
  File Encoding         : 65001
 
- Date: 13/04/2024 15:49:14
+ Date: 13/04/2024 21:20:07
 */
 
 SET NAMES utf8mb4;
@@ -27,8 +27,9 @@ CREATE TABLE `sys_menu`  (
   `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '菜单名称',
   `code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '权限字段',
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '路由name',
-  `path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '路由path',
-  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '组件路径',
+  `menu_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '跳转路径',
+  `route_path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '路由path',
+  `component_path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '组件路径',
   `type` tinyint(1) NOT NULL COMMENT '类型(0 目录 1 菜单 2 按钮)',
   `icon` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '菜单图标',
   `parent_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '上级菜单名称',
@@ -40,19 +41,19 @@ CREATE TABLE `sys_menu`  (
 -- ----------------------------
 -- Records of sys_menu
 -- ----------------------------
-INSERT INTO `sys_menu` VALUES (1, 0, '系统管理', 'sys:system:index', 'system', '/sys', NULL, 0, NULL, NULL, 1);
-INSERT INTO `sys_menu` VALUES (2, 1, '用户管理', 'sys:user:index', 'sysUserList', '/userList', '/sys/userList', 1, NULL, '系统管理', 1);
-INSERT INTO `sys_menu` VALUES (3, 1, '角色管理', 'sys:role:index', 'sysRoleList', '/roleList', '/sys/roleList', 1, NULL, '系统管理', 2);
-INSERT INTO `sys_menu` VALUES (4, 1, '菜单管理', 'sys:menu:index', 'sysMenuList', '/menuList', '/sys/menuList', 1, NULL, '系统管理', 3);
-INSERT INTO `sys_menu` VALUES (5, 2, '新增', 'sys:user:add', NULL, NULL, NULL, 2, NULL, '用户管理', 1);
-INSERT INTO `sys_menu` VALUES (6, 2, '删除', 'sys:user:delete', NULL, NULL, NULL, 2, NULL, '用户管理', 2);
-INSERT INTO `sys_menu` VALUES (7, 2, '编辑', 'sys:user:update', NULL, NULL, NULL, 2, NULL, '用户管理', 3);
-INSERT INTO `sys_menu` VALUES (8, 3, '新增', 'sys:role:add', NULL, NULL, NULL, 2, NULL, '角色管理', 1);
-INSERT INTO `sys_menu` VALUES (9, 3, '删除', 'sys:role:delete', NULL, NULL, NULL, 2, NULL, '角色管理', 2);
-INSERT INTO `sys_menu` VALUES (10, 3, '编辑', 'sys:role:update', NULL, NULL, NULL, 2, NULL, '角色管理', 3);
-INSERT INTO `sys_menu` VALUES (11, 4, '新增', 'sys:menu:add', NULL, NULL, NULL, 2, NULL, '菜单管理', 1);
-INSERT INTO `sys_menu` VALUES (12, 4, '删除', 'sys:menu:delete', NULL, NULL, NULL, 2, NULL, '菜单管理', 2);
-INSERT INTO `sys_menu` VALUES (13, 4, '编辑', 'sys:menu:update', NULL, NULL, NULL, 2, NULL, '菜单管理', 3);
+INSERT INTO `sys_menu` VALUES (1, 0, '系统管理', 'sys:system:index', 'system', '/sys', '/sys', NULL, 0, 'SettingFilled', NULL, 1);
+INSERT INTO `sys_menu` VALUES (2, 1, '用户管理', 'sys:user:index', 'sysUserList', '/sys/userList', 'userList', '/sys/userList', 1, 'TeamOutlined', '系统管理', 1);
+INSERT INTO `sys_menu` VALUES (3, 1, '角色管理', 'sys:role:index', 'sysRoleList', '/sys/roleList', 'roleList', '/sys/roleList', 1, 'CommentOutlined', '系统管理', 2);
+INSERT INTO `sys_menu` VALUES (4, 1, '菜单管理', 'sys:menu:index', 'sysMenuList', '/sys/menuList', 'menuList', '/sys/menuList', 1, 'FolderOutlined', '系统管理', 3);
+INSERT INTO `sys_menu` VALUES (5, 2, '新增', 'sys:user:add', NULL, NULL, NULL, NULL, 2, '', '用户管理', 1);
+INSERT INTO `sys_menu` VALUES (6, 2, '删除', 'sys:user:delete', NULL, NULL, NULL, NULL, 2, '', '用户管理', 2);
+INSERT INTO `sys_menu` VALUES (7, 2, '编辑', 'sys:user:update', NULL, NULL, NULL, NULL, 2, '', '用户管理', 3);
+INSERT INTO `sys_menu` VALUES (8, 3, '新增', 'sys:role:add', NULL, NULL, NULL, NULL, 2, '', '角色管理', 1);
+INSERT INTO `sys_menu` VALUES (9, 3, '删除', 'sys:role:delete', NULL, NULL, NULL, NULL, 2, '', '角色管理', 2);
+INSERT INTO `sys_menu` VALUES (10, 3, '编辑', 'sys:role:update', NULL, NULL, NULL, NULL, 2, '', '角色管理', 3);
+INSERT INTO `sys_menu` VALUES (11, 4, '新增', 'sys:menu:add', NULL, NULL, NULL, NULL, 2, '', '菜单管理', 1);
+INSERT INTO `sys_menu` VALUES (12, 4, '删除', 'sys:menu:delete', NULL, NULL, NULL, NULL, 2, '', '菜单管理', 2);
+INSERT INTO `sys_menu` VALUES (13, 4, '编辑', 'sys:menu:update', NULL, NULL, NULL, NULL, 2, '', '菜单管理', 3);
 
 -- ----------------------------
 -- Table structure for sys_role
